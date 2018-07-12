@@ -55,4 +55,20 @@
         <servlet-name>RefreshHeader</servlet-name>
         <url-pattern>/RefreshHeader</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>HelloUserList</servlet-name>
+        <servlet-class>HelloUserList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloUserList</servlet-name>
+        <url-pattern>/hiUserList</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HelloAddUser</servlet-name>
+        <servlet-class>HelloAddUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloAddUser</servlet-name>
+        <url-pattern>/hiAddUser</url-pattern>
+    </servlet-mapping>
 </web-app>

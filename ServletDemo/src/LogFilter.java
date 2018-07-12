@@ -14,7 +14,7 @@ public class LogFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         // 输出站点名称
-        System.out.println("doFilter 站点网址：http://www.runoob.com");
+        System.out.println("LogFilter doFilter");
         // 把请求传回过滤链
         filterChain.doFilter(servletRequest, servletResponse);
     }

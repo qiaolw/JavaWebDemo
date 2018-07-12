@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>qobTestDB</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<table id="userTb" border="1">
+    <tr>
+        <th>用户ID</th>
+        <th>用户名字</th>
+        <th>用户性别</th>
+        <th>用户年龄</th>
+    </tr>
+</table>
+<form id="formAddUser" onsubmit="return false" action="##" method="POST">
+    用户ID：<input type="text" name="id"><br>
+    用户名：<input type="text" name="name"><br/>
+    性别：<input type="text" name="sex" /><br>
+    年龄：<input type="text" name="age" /><br>
+    <input type="submit" value="提交" onclick="addUserClick()"/>
+</form>
+<script>
+    $.ajax({
+        method:"GET",
+        url:"hiUserList",
+        dataType:"json"
+    }).done(function (msg){
+        console.log(msg);
+    }).fail(function (err) {
+        console.log(err + " fail");
+    });
+
+    function addUserClick() {
+        $.ajax({
+            method:"POST",
+            url:"hiAddUser",
+            dataType:"json",
+            data:$('#formAddUser').serialize()
+        }).done(function (msg){
+            console.log(msg);
+        }).fail(function (err) {
+            console.log(err + " fail");
+        });
+    }
+</script>
+</body>
+</html>
