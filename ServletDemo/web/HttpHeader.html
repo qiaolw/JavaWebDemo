@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Http Header Table View</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<table id="headerTb" border="1">
+    <tr>
+        <th>Header 名称</th>
+        <th>Header 值</th>
+    </tr>
+</table>
+<button id="httpHeaderbt" onclick="getHttpHeaderClick()">获取头部数据</button>
+<p>响应方式自动刷新时间显示</p>
+<p id="timeShowId">0:0:0</p>
+<button id="reflushTimeBt" onclick="reflushTimeClick()">自动刷新 Header 设置</button>
+</body>
+<script type="text/javascript">
+    function getHttpHeaderClick() {
+        $.ajax({
+            method:"GET",
+            url:"DisplayHeader",
+            dataType:"json"
+        }).done(function (msg){
+            Object.keys(msg).forEach(function(key){
+                console.log(key, msg[key]);
+                var tr = document.createElement("tr");
+                var th1 = document.createElement("td");
+                th1.innerHTML = key;
+                var th2 = document.createElement("td");
+                th2.innerHTML = msg[key];
+                tr.append(th1, th2);
+                $("#headerTb").append(tr);
+            });
+        }).fail(function (err) {
+            console.log(err + " fail");
+        });
+    }
+    
+    function reflushTimeClick() {
+        $.ajax({
+            method:"POST",
+            url:"RefreshHeader",
+            dataType:"text"
+        }).done(function (msg) {
+            console.log(msg);
+            $("#timeShowId").text(msg);
+        }).fail(function (err) {
+
+        });
+    }
+</script>
+</html>
