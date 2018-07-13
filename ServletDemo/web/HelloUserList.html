@@ -19,7 +19,7 @@
     用户名：<input type="text" name="name"><br/>
     性别：<input type="text" name="sex" /><br>
     年龄：<input type="text" name="age" /><br>
-    <input type="submit" value="提交" onclick="addUserClick()"/>
+    <input type="submit" value="添加用户" onclick="addUserClick()"/>
 </form>
 <script>
     $.ajax({
@@ -28,6 +28,19 @@
         dataType:"json"
     }).done(function (msg){
         console.log(msg);
+        msg.forEach(function(user){
+            var tr = document.createElement("tr");
+            var th1 = document.createElement("td");
+            th1.innerHTML = user.userId;
+            var th2 = document.createElement("td");
+            th2.innerHTML = user.userName;
+            var th3 = document.createElement("td");
+            th3.innerHTML = user.userSex;
+            var th4 = document.createElement("td");
+            th4.innerHTML = user.userAge;
+            tr.append(th1, th2, th3, th4);
+            $("#userTb").append(tr);
+        });
     }).fail(function (err) {
         console.log(err + " fail");
     });

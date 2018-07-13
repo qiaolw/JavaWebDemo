@@ -1,5 +1,6 @@
 import com.google.gson.Gson;
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
 import javax.servlet.ServletException;
@@ -29,23 +30,25 @@ public class HelloAddUser extends HttpServlet {
         System.out.println(tName + " " + tId + " " + tAge + " " + tSex);
 
         Connection conn = null;
-        Statement stmt = null;
+        PreparedStatement stmt = null;
         response.setHeader("content-type", "application/json;charset=UTF-8");
 
         try {
             Class.forName(HelloUserList.JDBC_DRIVER);
             conn = (Connection) DriverManager.getConnection(HelloUserList.DB_URL, HelloUserList.USER, HelloUserList.PASS);
-            stmt = (Statement) conn.createStatement();
-            String sqlStr = "INSERT INTO qob_userinfo (userId, userName, userAge, userSex) VALUES (" + tId + "," + tName + "," + tAge + "," + tSex + ")";
+            String sqlStr = "INSERT INTO qob_userinfo (userId, userName, userAge, userSex) VALUES(?,?,?,?)";
+            stmt = (PreparedStatement) conn.prepareStatement(sqlStr);
+            stmt.setInt(1, Integer.parseInt(tId));
+            stmt.setString(2, tName);
+            stmt.setInt(3, Integer.parseInt(tAge));
+            stmt.setInt(4, Integer.parseInt(tSex));
 
             //INSERT INTO qob_userinfo (userId, userName, userAge, userSex) VALUES (100,'aaaa',50,1);
             System.out.println("sqlStr " + sqlStr);
-
-            stmt.executeQuery(sqlStr);
+            stmt.executeUpdate();
 
             stmt.close();
             conn.close();
-
         }catch (Exception ex){
             ex.printStackTrace();
         }finally{
