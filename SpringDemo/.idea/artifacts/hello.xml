@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="hello">
+    <output-path>$PROJECT_DIR$/out/artifacts/hello</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SpringDemo_main" />
+          <element id="dir-copy" path="$PROJECT_DIR$/src/main/conf" />
+        </element>
+        <element id="directory" name="libs">
+          <element id="library" level="project" name="Gradle: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Gradle: javax.servlet:javax.servlet-api:3.0.1" />
+          <element id="library" level="project" name="Gradle: junit:junit:4.11" />
+          <element id="library" level="project" name="Gradle: org.hamcrest:hamcrest-core:1.3" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.18.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-beans:4.3.18.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.3.18.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.18.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.3.18.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-web:4.3.18.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:4.3.18.RELEASE" />
+        </element>
+      </element>
+      <element id="module-output" name="SpringDemo_main" />
+    </root>
+  </artifact>
+</component>
